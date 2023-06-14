@@ -11,8 +11,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Visit {
 
 	@Id
@@ -33,4 +41,11 @@ public class Visit {
 	@Column(length = 10, nullable = false)
 	private String visitStatusCode;
 
+	@Builder
+	public Visit(Hospital hospital, Patient patient, LocalDateTime visitDate, String visitStatusCode) {
+		this.hospital = hospital;
+		this.patient = patient;
+		this.visitDate = visitDate;
+		this.visitStatusCode = visitStatusCode;
+	}
 }

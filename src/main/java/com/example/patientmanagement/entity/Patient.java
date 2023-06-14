@@ -16,8 +16,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Patient {
 
 	@Id
@@ -46,4 +54,14 @@ public class Patient {
 	@OneToMany(mappedBy = "patient", cascade = ALL, orphanRemoval = true)
 	private List<Visit> visits = new ArrayList<>();
 
+	@Builder
+	public Patient(Hospital hospital, String patientName, String patientRegistrationNumber, String genderCode,
+		String dateOfBirth, String mobilePhoneNumber) {
+		this.hospital = hospital;
+		this.patientName = patientName;
+		this.patientRegistrationNumber = patientRegistrationNumber;
+		this.genderCode = genderCode;
+		this.dateOfBirth = dateOfBirth;
+		this.mobilePhoneNumber = mobilePhoneNumber;
+	}
 }
