@@ -8,11 +8,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.patientmanagement.dto.request.VisitCreateRequestDto;
 import com.example.patientmanagement.dto.request.VisitUpdateRequestDto;
 import com.example.patientmanagement.dto.response.VisitDto;
+import com.example.patientmanagement.entity.Hospital;
+import com.example.patientmanagement.entity.Patient;
 import com.example.patientmanagement.entity.Visit;
+import com.example.patientmanagement.exception.PatientNotFoundException;
 import com.example.patientmanagement.exception.VisitNotFoundException;
+import com.example.patientmanagement.mapper.VisitMapper;
+import com.example.patientmanagement.repository.HospitalRepository;
+import com.example.patientmanagement.repository.PatientRepository;
 import com.example.patientmanagement.repository.VisitRepository;
 import com.example.patientmanagement.service.VisitService;
-import com.example.patientmanagement.mapper.VisitMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,6 +28,8 @@ import lombok.RequiredArgsConstructor;
 public class VisitServiceImpl implements VisitService {
 
 	private final VisitRepository visitRepository;
+	private final HospitalRepository hospitalRepository;
+	private final PatientRepository patientRepository;
 
 	@Override
 	public VisitDto getVisitById(Long visitId) {
@@ -41,6 +48,15 @@ public class VisitServiceImpl implements VisitService {
 	@Transactional
 	public VisitDto createVisit(VisitCreateRequestDto requestDto) {
 		Visit visit = VisitMapper.toEntity(requestDto);
+
+		Hospital hospital = hospitalRepository.findById(requestDto.getHospitalId())
+			.orElseThrow(() -> new IllegalArgumentException());
+		visit.setHospital(hospital);
+
+		Patient patient = patientRepository.findById(requestDto.getPatientId())
+			.orElseThrow(PatientNotFoundException::new);
+		visit.setPatient(patient);
+
 		Visit createdVisit = visitRepository.save(visit);
 		return VisitMapper.toDto(createdVisit);
 	}

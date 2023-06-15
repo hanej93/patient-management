@@ -36,6 +36,13 @@ dependencies {
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 
+	// webjars
+	implementation 'org.webjars:bootstrap:5.2.3'
+	implementation 'org.webjars:jquery:3.6.4'
+
+	// etc
+	implementation 'com.github.javafaker:javafaker:1.0.2'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'

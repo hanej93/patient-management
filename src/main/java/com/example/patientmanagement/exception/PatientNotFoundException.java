@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public class PatientNotFoundException extends CustomException {
 
-	private static final String MESSAGE = "환자를 찾을 수 없습니다.";
+	private static final String MESSAGE = "해당 환자를 찾을 수 없습니다.";
 
 	public PatientNotFoundException() {
 		super(MESSAGE);

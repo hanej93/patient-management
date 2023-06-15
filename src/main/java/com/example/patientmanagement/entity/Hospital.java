@@ -13,17 +13,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Hospital {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private Long hospitalId;
 
-	@Column(length = 45, nullable = false)
+	@Column(length = 100, nullable = false)
 	private String hospitalName;
 
 	@Column(length = 20, nullable = false)
@@ -38,4 +42,10 @@ public class Hospital {
 	@OneToMany(mappedBy = "hospital", cascade = ALL, orphanRemoval = true)
 	private List<Visit> visits = new ArrayList<>();
 
+	@Builder
+	public Hospital(String hospitalName, String careInstitutionNumber, String directorName) {
+		this.hospitalName = hospitalName;
+		this.careInstitutionNumber = careInstitutionNumber;
+		this.directorName = directorName;
+	}
 }

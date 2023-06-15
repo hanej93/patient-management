@@ -31,7 +31,6 @@ public class PatientMapper {
 	public static Patient toEntity(PatientCreateRequestDto requestDto) {
 		return Patient.builder()
 			.patientName(requestDto.getPatientName())
-			.patientRegistrationNumber(requestDto.getPatientRegistrationNumber())
 			.genderCode(requestDto.getGenderCode())
 			.dateOfBirth(requestDto.getDateOfBirth())
 			.mobilePhoneNumber(requestDto.getMobilePhoneNumber())

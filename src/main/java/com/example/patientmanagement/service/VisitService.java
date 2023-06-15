@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.patientmanagement.dto.request.VisitCreateRequestDto;
 import com.example.patientmanagement.dto.request.VisitUpdateRequestDto;
 import com.example.patientmanagement.dto.response.VisitDto;
-import com.example.patientmanagement.entity.Visit;
+import com.example.patientmanagement.entity.Patient;
 
 public interface VisitService {
 

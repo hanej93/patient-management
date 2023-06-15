@@ -1,5 +1,9 @@
 package com.example.patientmanagement.dto.response;
 
+import java.util.List;
+
+import com.querydsl.core.annotations.QueryProjection;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +21,6 @@ public class PatientDto {
 	private String genderCode;
 	private String dateOfBirth;
 	private String mobilePhoneNumber;
+	private List<VisitDto> visits;
 
 }

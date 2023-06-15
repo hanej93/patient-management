@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class PatientCreateRequestDto {
 
 	private String patientName;
-	private String patientRegistrationNumber;
+	private Long hospitalId;
 	private String genderCode;
 	private String dateOfBirth;
 	private String mobilePhoneNumber;

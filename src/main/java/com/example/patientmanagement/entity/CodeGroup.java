@@ -5,30 +5,44 @@ import static jakarta.persistence.CascadeType.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CodeGroup {
 
 	@Id
-	@GeneratedValue
 	@Column(length = 10)
 	private String codeGroupId;
 
 	@Column(length = 10, nullable = false)
 	private String codeGroupName;
 
-	@Column(length = 10, nullable = false)
+	@Column(length = 50, nullable = false)
 	private String description;
 
 	@OneToMany(mappedBy = "codeGroup", cascade = ALL, orphanRemoval = true)
 	private Set<Code> codes = new HashSet<>();
 
+	@Builder
+	public CodeGroup(String codeGroupId, String codeGroupName, String description, Set<Code> codes) {
+		this.codeGroupId = codeGroupId;
+		this.codeGroupName = codeGroupName;
+		this.description = description;
+		this.codes = codes;
+	}
+
+	public void addCode(Code code) {
+		codes.add(code);
+		code.setCodeGroup(this);
+	}
 }
