@@ -493,8 +493,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h3 id="_요청"><a class="link" href="#_요청">요청</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/patients/1 HTTP/1.1
-Accept: application/json
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/patients/103 HTTP/1.1
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -524,9 +523,9 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 520
+Content-Length: 301
 
-{"patientId":1,"patientName":"조 서윤","patientRegistrationNumber":"H000050","genderCode":"F","dateOfBirth":"1979-05-05","mobilePhoneNumber":"1-694-972-3311","hospital":{"hospitalId":8,"hospitalName":"OHIO VALLEY GENERAL HOSPITAL","careInstitutionNumber":"6700391367","directorName":"권 지우"},"visits":[{"visitId":18,"hospitalId":4,"patientId":1,"visitDate":"2024-05-27T23:01:57.734","visitStatusCode":"3"},{"visitId":104,"hospitalId":5,"patientId":1,"visitDate":"2024-01-01T06:51:49.464","visitStatusCode":"3"}]}</code></pre>
+{"patientId":103,"patientName":"송 우진","patientRegistrationNumber":"96688393","genderCode":"M","dateOfBirth":"1984-09-06","mobilePhoneNumber":"002-404-7214","hospital":{"hospitalId":13,"hospitalName":"YAVAPAI REGIONAL MEDICAL CENTER","careInstitutionNumber":"537963","directorName":"정 현준"}}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -636,7 +635,6 @@ Content-Length: 520
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/patients/all HTTP/1.1
-Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -647,9 +645,9 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 16341
+Content-Length: 165
 
-[{"patientId":1,"patientName":"조 서윤","patientRegistrationNumber":"H000050","genderCode":"F","dateOfBirth":"1979-05-05","mobilePhoneNumber":"1-694-972-3311"},{"patientId":2,"patientName":"임 하은","patientRegistrationNumber":"F000362","genderCode":"F","dateOfBirth":"2000-10-07","mobilePhoneNumber":"900-728-3832"},{"patientId":3,"patientName":"강 서연","patientRegistrationNumber":"B000330","genderCode":"M","dateOfBirth":"1971-04-05","mobilePhoneNumber":"1-516-204-4058"},{"patientId":4,"patientName":"한 민서","patientRegistrationNumber":"I000310","genderCode":"F","dateOfBirth":"1986-01-08","mobilePhoneNumber":"468.058.9646"},{"patientId":5,"patientName":"최 민재","patientRegistrationNumber":"H000114","genderCode":"M","dateOfBirth":"1995-09-07","mobilePhoneNumber":"1-046-312-3119"},{"patientId":6,"patientName":"윤 은주","patientRegistrationNumber":"H000083","genderCode":"F","dateOfBirth":"1989-10-27","mobilePhoneNumber":"745-201-5076"},{"patientId":7,"patientName":"신 준서","patientRegistrationNumber":"H000390","genderCode":"F","dateOfBirth":"1992-11-28","mobilePhoneNumber":"1-709-186-6297"},{"patientId":8,"patientName":"류 건우","patientRegistrationNumber":"B000367","genderCode":"F","dateOfBirth":"1989-09-20","mobilePhoneNumber":"803.199.1003"},{"patientId":9,"patientName":"장 수빈","patientRegistrationNumber":"F000667","genderCode":"F","dateOfBirth":"1964-07-12","mobilePhoneNumber":"1-663-101-2738"},{"patientId":10,"patientName":"임 예은","patientRegistrationNumber":"F000101","genderCode":"F","dateOfBirth":"1982-09-15","mobilePhoneNumber":"937-441-3300"},{"patientId":11,"patientName":"임 준서","patientRegistrationNumber":"G000586","genderCode":"F","dateOfBirth":"1987-11-19","mobilePhoneNumber":"1-929-797-5255"},{"patientId":12,"patientName":"윤 지민","patientRegistrationNumber":"G000300","genderCode":"F","dateOfBirth":"1997-02-08","mobilePhoneNumber":"458-580-2330"},{"patientId":13,"patientName":"서 민서","patientRegistrationNumber":"H000287","genderCode":"M","dateOfBirth":"1971-03-30","mobilePhoneNumber":"1-804-075-6078"},{"patientId":14,"patientName":"황 은주","patientRegistrationNumber":"A000592","genderCode":"F","dateOfBirth":"1983-10-17","mobilePhoneNumber":"1-309-446-6480"},{"patientId":15,"patientName":"서 서연","patientRegistrationNumber":"G000890","genderCode":"M","dateOfBirth":"2003-07-29","mobilePhoneNumber":"1-386-884-5319"},{"patientId":16,"patientName":"송 준서","patientRegistrationNumber":"J000926","genderCode":"F","dateOfBirth":"1983-10-08","mobilePhoneNumber":"119.352.3759"},{"patientId":17,"patientName":"오 서윤","patientRegistrationNumber":"C000446","genderCode":"M","dateOfBirth":"2001-09-18","mobilePhoneNumber":"1-677-361-4059"},{"patientId":18,"patientName":"신 민재","patientRegistrationNumber":"E000150","genderCode":"M","dateOfBirth":"1969-12-31","mobilePhoneNumber":"(805) 062-6267"},{"patientId":19,"patientName":"류 지훈","patientRegistrationNumber":"H000081","genderCode":"F","dateOfBirth":"1959-05-23","mobilePhoneNumber":"736.299.9405"},{"patientId":20,"patientName":"이 서연","patientRegistrationNumber":"J000160","genderCode":"M","dateOfBirth":"1977-12-31","mobilePhoneNumber":"1-193-420-5298"},{"patientId":21,"patientName":"장 수빈","patientRegistrationNumber":"B000266","genderCode":"F","dateOfBirth":"1979-12-03","mobilePhoneNumber":"(027) 595-0763"},{"patientId":22,"patientName":"박 민준","patientRegistrationNumber":"F000330","genderCode":"M","dateOfBirth":"1969-06-20","mobilePhoneNumber":"1-622-897-6596"},{"patientId":23,"patientName":"정 현우","patientRegistrationNumber":"D000963","genderCode":"M","dateOfBirth":"1993-06-30","mobilePhoneNumber":"777-566-5041"},{"patientId":24,"patientName":"강 윤서","patientRegistrationNumber":"E000665","genderCode":"M","dateOfBirth":"1977-06-13","mobilePhoneNumber":"(387) 768-8198"},{"patientId":25,"patientName":"최 지후","patientRegistrationNumber":"E000823","genderCode":"M","dateOfBirth":"1965-02-19","mobilePhoneNumber":"508.050.2648"},{"patientId":26,"patientName":"김 준서","patientRegistrationNumber":"J000990","genderCode":"M","dateOfBirth":"2000-06-02","mobilePhoneNumber":"1-926-058-7508"},{"patientId":27,"patientName":"박 우진","patientRegistrationNumber":"H000444","genderCode":"F","dateOfBirth":"2004-03-31","mobilePhoneNumber":"161.706.4124"},{"patientId":28,"patientName":"윤 수빈","patientRegistrationNumber":"D000826","genderCode":"F","dateOfBirth":"1971-11-15","mobilePhoneNumber":"236.059.0288"},{"patientId":29,"patientName":"조 건우","patientRegistrationNumber":"B000584","genderCode":"F","dateOfBirth":"1987-02-02","mobilePhoneNumber":"403.847.6131"},{"patientId":30,"patientName":"류 서연","patientRegistrationNumber":"G000198","genderCode":"M","dateOfBirth":"1994-11-01","mobilePhoneNumber":"1-702-331-2660"},{"patientId":31,"patientName":"신 은주","patientRegistrationNumber":"G000667","genderCode":"M","dateOfBirth":"1997-07-13","mobilePhoneNumber":"1-752-571-1529"},{"patientId":32,"patientName":"강 민서","patientRegistrationNumber":"J000460","genderCode":"M","dateOfBirth":"1990-05-18","mobilePhoneNumber":"(986) 178-7740"},{"patientId":33,"patientName":"정 예은","patientRegistrationNumber":"A000773","genderCode":"M","dateOfBirth":"1991-11-21","mobilePhoneNumber":"690-913-4279"},{"patientId":34,"patientName":"강 민재","patientRegistrationNumber":"H000634","genderCode":"F","dateOfBirth":"1962-01-27","mobilePhoneNumber":"1-909-416-4597"},{"patientId":35,"patientName":"임 민서","patientRegistrationNumber":"A000064","genderCode":"F","dateOfBirth":"1972-10-07","mobilePhoneNumber":"244.756.8942"},{"patientId":36,"patientName":"임 현준","patientRegistrationNumber":"E000244","genderCode":"M","dateOfBirth":"1965-11-16","mobilePhoneNumber":"1-956-473-7289"},{"patientId":37,"patientName":"황 예준","patientRegistrationNumber":"I000813","genderCode":"F","dateOfBirth":"1997-09-11","mobilePhoneNumber":"728.498.1672"},{"patientId":38,"patientName":"강 민서","patientRegistrationNumber":"E000685","genderCode":"M","dateOfBirth":"1992-02-02","mobilePhoneNumber":"452.304.3886"},{"patientId":39,"patientName":"정 민서","patientRegistrationNumber":"A000314","genderCode":"F","dateOfBirth":"1989-12-03","mobilePhoneNumber":"1-626-182-1020"},{"patientId":40,"patientName":"한 우진","patientRegistrationNumber":"F000521","genderCode":"M","dateOfBirth":"1997-10-26","mobilePhoneNumber":"591.772.3882"},{"patientId":41,"patientName":"신 은주","patientRegistrationNumber":"I000322","genderCode":"M","dateOfBirth":"1997-11-27","mobilePhoneNumber":"634.091.2702"},{"patientId":42,"patientName":"이 지후","patientRegistrationNumber":"I000839","genderCode":"F","dateOfBirth":"2003-09-22","mobilePhoneNumber":"209-437-5974"},{"patientId":43,"patientName":"이 우진","patientRegistrationNumber":"J000643","genderCode":"F","dateOfBirth":"2002-04-08","mobilePhoneNumber":"784.982.2163"},{"patientId":44,"patientName":"최 서현","patientRegistrationNumber":"D000900","genderCode":"M","dateOfBirth":"1974-02-02","mobilePhoneNumber":"530-414-3723"},{"patientId":45,"patientName":"황 민재","patientRegistrationNumber":"J000143","genderCode":"M","dateOfBirth":"1968-12-31","mobilePhoneNumber":"105-251-6091"},{"patientId":46,"patientName":"한 수빈","patientRegistrationNumber":"C000459","genderCode":"F","dateOfBirth":"1969-06-17","mobilePhoneNumber":"079.217.6175"},{"patientId":47,"patientName":"권 하은","patientRegistrationNumber":"I000363","genderCode":"M","dateOfBirth":"1974-03-02","mobilePhoneNumber":"362-542-2678"},{"patientId":48,"patientName":"박 예은","patientRegistrationNumber":"G000452","genderCode":"F","dateOfBirth":"1975-12-16","mobilePhoneNumber":"145.573.2220"},{"patientId":49,"patientName":"오 현준","patientRegistrationNumber":"H000454","genderCode":"F","dateOfBirth":"1969-10-21","mobilePhoneNumber":"819.980.6833"},{"patientId":50,"patientName":"이 은주","patientRegistrationNumber":"F000626","genderCode":"M","dateOfBirth":"1999-03-27","mobilePhoneNumber":"489-629-1071"},{"patientId":51,"patientName":"김 준서","patientRegistrationNumber":"I000807","genderCode":"M","dateOfBirth":"2004-11-22","mobilePhoneNumber":"246-011-4736"},{"patientId":52,"patientName":"임 현준","patientRegistrationNumber":"B000652","genderCode":"M","dateOfBirth":"1976-04-06","mobilePhoneNumber":"156.960.9689"},{"patientId":53,"patientName":"최 서윤","patientRegistrationNumber":"B000601","genderCode":"M","dateOfBirth":"1980-05-06","mobilePhoneNumber":"033.342.7198"},{"patientId":54,"patientName":"신 지훈","patientRegistrationNumber":"J000594","genderCode":"M","dateOfBirth":"1975-06-16","mobilePhoneNumber":"1-495-469-5727"},{"patientId":55,"patientName":"이 하은","patientRegistrationNumber":"B000883","genderCode":"F","dateOfBirth":"1966-08-20","mobilePhoneNumber":"(801) 211-3492"},{"patientId":56,"patientName":"황 예은","patientRegistrationNumber":"G000664","genderCode":"F","dateOfBirth":"1992-02-02","mobilePhoneNumber":"848-057-8013"},{"patientId":57,"patientName":"김 예준","patientRegistrationNumber":"H000601","genderCode":"F","dateOfBirth":"1972-02-11","mobilePhoneNumber":"(627) 950-4039"},{"patientId":58,"patientName":"권 윤서","patientRegistrationNumber":"I000009","genderCode":"F","dateOfBirth":"1964-06-29","mobilePhoneNumber":"315-254-5857"},{"patientId":59,"patientName":"장 서현","patientRegistrationNumber":"B000935","genderCode":"F","dateOfBirth":"1959-05-31","mobilePhoneNumber":"621-372-9211"},{"patientId":60,"patientName":"권 예은","patientRegistrationNumber":"B000680","genderCode":"M","dateOfBirth":"1963-01-31","mobilePhoneNumber":"1-328-793-6298"},{"patientId":61,"patientName":"신 민재","patientRegistrationNumber":"A000187","genderCode":"F","dateOfBirth":"1976-07-01","mobilePhoneNumber":"908.349.4452"},{"patientId":62,"patientName":"강 지우","patientRegistrationNumber":"G000164","genderCode":"F","dateOfBirth":"2004-04-23","mobilePhoneNumber":"395.117.7777"},{"patientId":63,"patientName":"류 준서","patientRegistrationNumber":"J000941","genderCode":"F","dateOfBirth":"1971-09-11","mobilePhoneNumber":"(527) 273-1101"},{"patientId":64,"patientName":"최 민준","patientRegistrationNumber":"J000424","genderCode":"F","dateOfBirth":"1970-05-13","mobilePhoneNumber":"1-189-202-6582"},{"patientId":65,"patientName":"임 수빈","patientRegistrationNumber":"D000999","genderCode":"M","dateOfBirth":"1983-06-04","mobilePhoneNumber":"(282) 904-2030"},{"patientId":66,"patientName":"이 준서","patientRegistrationNumber":"J000651","genderCode":"M","dateOfBirth":"2001-12-14","mobilePhoneNumber":"1-864-159-9415"},{"patientId":67,"patientName":"강 현우","patientRegistrationNumber":"I000001","genderCode":"M","dateOfBirth":"1969-07-14","mobilePhoneNumber":"(639) 568-3427"},{"patientId":68,"patientName":"신 예준","patientRegistrationNumber":"H000918","genderCode":"F","dateOfBirth":"1980-02-08","mobilePhoneNumber":"938.645.7253"},{"patientId":69,"patientName":"서 준서","patientRegistrationNumber":"H000379","genderCode":"F","dateOfBirth":"1969-09-10","mobilePhoneNumber":"473.249.4020"},{"patientId":70,"patientName":"김 건우","patientRegistrationNumber":"B000100","genderCode":"F","dateOfBirth":"1973-06-15","mobilePhoneNumber":"461-713-6112"},{"patientId":71,"patientName":"송 하은","patientRegistrationNumber":"D000599","genderCode":"M","dateOfBirth":"1959-11-26","mobilePhoneNumber":"(418) 115-4617"},{"patientId":72,"patientName":"조 예준","patientRegistrationNumber":"B000449","genderCode":"M","dateOfBirth":"1981-08-13","mobilePhoneNumber":"384.388.0766"},{"patientId":73,"patientName":"조 지후","patientRegistrationNumber":"D000761","genderCode":"F","dateOfBirth":"1999-05-15","mobilePhoneNumber":"1-322-590-6039"},{"patientId":74,"patientName":"안 우진","patientRegistrationNumber":"E000451","genderCode":"M","dateOfBirth":"1994-10-17","mobilePhoneNumber":"603.432.0256"},{"patientId":75,"patientName":"임 지민","patientRegistrationNumber":"A000539","genderCode":"M","dateOfBirth":"1972-01-01","mobilePhoneNumber":"082.837.1621"},{"patientId":76,"patientName":"이 민서","patientRegistrationNumber":"D000361","genderCode":"F","dateOfBirth":"1959-02-24","mobilePhoneNumber":"199-360-0519"},{"patientId":77,"patientName":"김 민서","patientRegistrationNumber":"A000492","genderCode":"M","dateOfBirth":"1970-08-08","mobilePhoneNumber":"920.603.4290"},{"patientId":78,"patientName":"오 예은","patientRegistrationNumber":"E000469","genderCode":"F","dateOfBirth":"2002-08-23","mobilePhoneNumber":"461.430.3352"},{"patientId":79,"patientName":"신 서연","patientRegistrationNumber":"J000441","genderCode":"F","dateOfBirth":"1985-09-18","mobilePhoneNumber":"195.926.2712"},{"patientId":80,"patientName":"신 하은","patientRegistrationNumber":"J000423","genderCode":"F","dateOfBirth":"1992-11-18","mobilePhoneNumber":"1-794-135-6022"},{"patientId":81,"patientName":"김 지훈","patientRegistrationNumber":"G000203","genderCode":"F","dateOfBirth":"1996-02-20","mobilePhoneNumber":"(812) 334-8608"},{"patientId":82,"patientName":"홍 우진","patientRegistrationNumber":"D000302","genderCode":"M","dateOfBirth":"1963-08-24","mobilePhoneNumber":"(914) 182-1985"},{"patientId":83,"patientName":"조 우진","patientRegistrationNumber":"F000200","genderCode":"M","dateOfBirth":"1995-04-18","mobilePhoneNumber":"647-125-9292"},{"patientId":84,"patientName":"홍 현준","patientRegistrationNumber":"J000729","genderCode":"F","dateOfBirth":"1977-05-04","mobilePhoneNumber":"220-641-5976"},{"patientId":85,"patientName":"임 건우","patientRegistrationNumber":"E000286","genderCode":"F","dateOfBirth":"1986-12-08","mobilePhoneNumber":"(511) 599-3807"},{"patientId":86,"patientName":"홍 은주","patientRegistrationNumber":"F000862","genderCode":"F","dateOfBirth":"1985-12-30","mobilePhoneNumber":"434.606.4192"},{"patientId":87,"patientName":"오 지우","patientRegistrationNumber":"D000008","genderCode":"M","dateOfBirth":"1969-01-14","mobilePhoneNumber":"371.947.4173"},{"patientId":88,"patientName":"한 수빈","patientRegistrationNumber":"E000262","genderCode":"M","dateOfBirth":"1977-09-26","mobilePhoneNumber":"(191) 338-9313"},{"patientId":89,"patientName":"안 지민","patientRegistrationNumber":"G000692","genderCode":"M","dateOfBirth":"2003-10-17","mobilePhoneNumber":"578.703.8589"},{"patientId":90,"patientName":"최 서연","patientRegistrationNumber":"E000013","genderCode":"F","dateOfBirth":"1988-08-18","mobilePhoneNumber":"517-577-2177"},{"patientId":91,"patientName":"최 지훈","patientRegistrationNumber":"C000275","genderCode":"M","dateOfBirth":"1973-01-01","mobilePhoneNumber":"(776) 003-7909"},{"patientId":92,"patientName":"권 민서","patientRegistrationNumber":"A000420","genderCode":"M","dateOfBirth":"1959-12-12","mobilePhoneNumber":"310-596-1340"},{"patientId":93,"patientName":"신 지민","patientRegistrationNumber":"I000791","genderCode":"M","dateOfBirth":"1961-02-02","mobilePhoneNumber":"(938) 745-4899"},{"patientId":94,"patientName":"김 민재","patientRegistrationNumber":"E000696","genderCode":"F","dateOfBirth":"1963-01-13","mobilePhoneNumber":"1-855-380-5056"},{"patientId":95,"patientName":"이 지민","patientRegistrationNumber":"G000163","genderCode":"M","dateOfBirth":"1982-02-24","mobilePhoneNumber":"1-113-750-9458"},{"patientId":96,"patientName":"류 예준","patientRegistrationNumber":"I000890","genderCode":"M","dateOfBirth":"1986-10-01","mobilePhoneNumber":"321.262.3771"},{"patientId":97,"patientName":"장 예은","patientRegistrationNumber":"C000807","genderCode":"M","dateOfBirth":"1990-05-18","mobilePhoneNumber":"253.361.1334"},{"patientId":98,"patientName":"김 현우","patientRegistrationNumber":"F000352","genderCode":"M","dateOfBirth":"1985-09-17","mobilePhoneNumber":"633.216.8179"},{"patientId":99,"patientName":"권 지훈","patientRegistrationNumber":"D000898","genderCode":"F","dateOfBirth":"1981-10-07","mobilePhoneNumber":"557-994-7503"},{"patientId":100,"patientName":"안 수빈","patientRegistrationNumber":"F000756","genderCode":"F","dateOfBirth":"1974-02-11","mobilePhoneNumber":"(439) 110-1545"},{"patientId":101,"patientName":"이 은주","patientRegistrationNumber":"A000059","genderCode":"M","dateOfBirth":"1990-07-10","mobilePhoneNumber":"750.211.8354"}]</code></pre>
+[{"patientId":104,"patientName":"김 하은","patientRegistrationNumber":"50120559","genderCode":"M","dateOfBirth":"1963-02-28","mobilePhoneNumber":"01-04486-5400"}]</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -679,7 +677,7 @@ Content-Length: 16341
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].patientName</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">환자이름</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">환자 이름</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].patientRegistrationNumber</code></p></td>
@@ -755,9 +753,9 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 2025
+Content-Length: 501
 
-{"content":[{"patientId":101,"patientName":"이 은주","patientRegistrationNumber":"A000059","genderCode":"M","dateOfBirth":"1990-07-10","mobilePhoneNumber":"750.211.8354","recentlyVisited":"-"},{"patientId":95,"patientName":"이 지민","patientRegistrationNumber":"G000163","genderCode":"M","dateOfBirth":"1982-02-24","mobilePhoneNumber":"1-113-750-9458","recentlyVisited":"-"},{"patientId":76,"patientName":"이 민서","patientRegistrationNumber":"D000361","genderCode":"F","dateOfBirth":"1959-02-24","mobilePhoneNumber":"199-360-0519","recentlyVisited":"2024-06-04"},{"patientId":66,"patientName":"이 준서","patientRegistrationNumber":"J000651","genderCode":"M","dateOfBirth":"2001-12-14","mobilePhoneNumber":"1-864-159-9415","recentlyVisited":"2024-04-01"},{"patientId":55,"patientName":"이 하은","patientRegistrationNumber":"B000883","genderCode":"F","dateOfBirth":"1966-08-20","mobilePhoneNumber":"(801) 211-3492","recentlyVisited":"2023-10-22"},{"patientId":50,"patientName":"이 은주","patientRegistrationNumber":"F000626","genderCode":"M","dateOfBirth":"1999-03-27","mobilePhoneNumber":"489-629-1071","recentlyVisited":"2024-03-06"},{"patientId":43,"patientName":"이 우진","patientRegistrationNumber":"J000643","genderCode":"F","dateOfBirth":"2002-04-08","mobilePhoneNumber":"784.982.2163","recentlyVisited":"-"},{"patientId":42,"patientName":"이 지후","patientRegistrationNumber":"I000839","genderCode":"F","dateOfBirth":"2003-09-22","mobilePhoneNumber":"209-437-5974","recentlyVisited":"2023-10-29"},{"patientId":20,"patientName":"이 서연","patientRegistrationNumber":"J000160","genderCode":"M","dateOfBirth":"1977-12-31","mobilePhoneNumber":"1-193-420-5298","recentlyVisited":"2024-01-06"}],"pageable":{"sort":{"empty":true,"sorted":false,"unsorted":true},"offset":0,"pageNumber":0,"pageSize":15,"unpaged":false,"paged":true},"last":true,"totalPages":1,"totalElements":9,"size":15,"number":0,"sort":{"empty":true,"sorted":false,"unsorted":true},"first":true,"numberOfElements":9,"empty":false}</code></pre>
+{"content":[{"patientId":101,"patientName":"이 지민","patientRegistrationNumber":"69501012","genderCode":"M","dateOfBirth":"1976-03-07","mobilePhoneNumber":"057-6668-2607","recentlyVisited":"-"}],"pageable":{"sort":{"empty":true,"sorted":false,"unsorted":true},"offset":0,"pageNumber":0,"pageSize":15,"paged":true,"unpaged":false},"last":true,"totalPages":1,"totalElements":1,"size":15,"number":0,"sort":{"empty":true,"sorted":false,"unsorted":true},"first":true,"numberOfElements":1,"empty":false}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -928,50 +926,64 @@ Content-Length: 2025
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/patients HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 122
+Content-Length: 125
 Host: localhost:8080
 
-{"patientName":"이 은주","hospitalId":1,"genderCode":"M","dateOfBirth":"1990-07-10","mobilePhoneNumber":"750.211.8354"}</code></pre>
+{"patientName":"서 건우","hospitalId":15,"genderCode":"F","dateOfBirth":"1968-09-15","mobilePhoneNumber":"(513) 095-5950"}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Path</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Optional</th>
+<th class="tableblock halign-left valign-top">Constraint</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>patientName</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">patientName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">환자이름</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hospitalId</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hospitalId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">병원 아이디</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>genderCode</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">genderCode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">성별 코드</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dateOfBirth</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dateOfBirth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">출생일</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mobilePhoneNumber</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mobilePhoneNumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">모바일 전화번호</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -982,9 +994,9 @@ Host: localhost:8080
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 201 Created
 Content-Type: application/json
-Content-Length: 161
+Content-Length: 163
 
-{"patientId":101,"patientName":"이 은주","patientRegistrationNumber":"A000059","genderCode":"M","dateOfBirth":"1990-07-10","mobilePhoneNumber":"750.211.8354"}</code></pre>
+{"patientId":106,"patientName":"서 건우","patientRegistrationNumber":"O000545","genderCode":"F","dateOfBirth":"1968-09-15","mobilePhoneNumber":"(513) 095-5950"}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1043,7 +1055,7 @@ Content-Length: 161
 <h3 id="_요청_5"><a class="link" href="#_요청_5">요청</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /api/patients/1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /api/patients/107 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 110
 Host: localhost:8080
@@ -1072,37 +1084,49 @@ Host: localhost:8080
 </table>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Path</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Optional</th>
+<th class="tableblock halign-left valign-top">Constraint</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>patientName</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">patientName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">수정된 환자 이름</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>genderCode</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">genderCode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">수정된 성별 코드</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dateOfBirth</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dateOfBirth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">수정된 생년월일</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mobilePhoneNumber</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mobilePhoneNumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">수정된 휴대폰 번호</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -1113,9 +1137,9 @@ Host: localhost:8080
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 162
+Content-Length: 165
 
-{"patientId":1,"patientName":"수정이름","patientRegistrationNumber":"H000050","genderCode":"F","dateOfBirth":"2022-02-22","mobilePhoneNumber":"010-2222-2222"}</code></pre>
+{"patientId":107,"patientName":"수정이름","patientRegistrationNumber":"99955382","genderCode":"F","dateOfBirth":"2022-02-22","mobilePhoneNumber":"010-2222-2222"}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1174,7 +1198,7 @@ Content-Length: 162
 <h3 id="_요청_6"><a class="link" href="#_요청_6">요청</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/patients/1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/patients/102 HTTP/1.1
 Host: localhost:8080</code></pre>
 </div>
 </div>

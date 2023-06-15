@@ -51,8 +51,8 @@ class PatientServiceImplTest {
 	private Patient patient;
 	private Hospital hospital;
 
-	private Faker faker = new Faker(Locale.KOREA);
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private final Faker faker = new Faker(Locale.KOREA);
+	private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 	@BeforeEach
 	public void setup() {
