@@ -13,6 +13,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	asciidoctorExt
 }
 
 repositories {
@@ -36,6 +37,10 @@ dependencies {
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 
+	// spring docs
+	asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
 	// webjars
 	implementation 'org.webjars:bootstrap:5.2.3'
 	implementation 'org.webjars:jquery:3.6.4'
@@ -48,7 +53,6 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
 tasks.named('test') {
@@ -56,9 +60,12 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-tasks.named('asciidoctor') {
+asciidoctor {
 	inputs.dir snippetsDir
 	dependsOn test
+	outputDir file('src/main/resources/static/docs')
+	attributes 'snippets': snippetsDir
+	sourceDir file('src/main/asciidoc')
 }
 
 def querydslSrcDir = 'src/main/generated'

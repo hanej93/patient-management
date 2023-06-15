@@ -1,0 +1,60 @@
+= Patient Management API
+:doctype:  book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+== Get Patient by ID
+=== 요청
+include::{snippets}/get-patient-by-id/http-request.adoc[]
+include::{snippets}/get-patient-by-id/path-parameters.adoc[]
+
+=== 응답
+include::{snippets}/get-patient-by-id/http-response.adoc[]
+include::{snippets}/get-patient-by-id/response-fields.adoc[]
+
+== Get All Patients
+=== 요청
+include::{snippets}/get-all-patients/http-request.adoc[]
+
+=== 응답
+include::{snippets}/get-all-patients/http-response.adoc[]
+include::{snippets}/get-all-patients/response-fields.adoc[]
+
+== Get Paged Patients
+=== 요청
+include::{snippets}/get-paged-patients/http-request.adoc[]
+include::{snippets}/get-paged-patients/path-parameters.adoc[]
+
+=== 응답
+include::{snippets}/get-paged-patients/http-response.adoc[]
+include::{snippets}/get-paged-patients/response-fields.adoc[]
+
+== Create Patient
+=== 요청
+include::{snippets}/create-patient/http-request.adoc[]
+include::{snippets}/create-patient/request-fields.adoc[]
+
+=== 응답
+include::{snippets}/create-patient/http-response.adoc[]
+include::{snippets}/create-patient/response-fields.adoc[]
+
+== Update Patient
+=== 요청
+include::{snippets}/update-patient/http-request.adoc[]
+include::{snippets}/update-patient/path-parameters.adoc[]
+include::{snippets}/update-patient/request-fields.adoc[]
+
+=== 응답
+include::{snippets}/update-patient/http-response.adoc[]
+include::{snippets}/update-patient/response-fields.adoc[]
+
+== Delete Patient
+=== 요청
+include::{snippets}/delete-patient/http-request.adoc[]
+include::{snippets}/delete-patient/path-parameters.adoc[]
+
+=== 응답
+include::{snippets}/delete-patient/http-response.adoc[]

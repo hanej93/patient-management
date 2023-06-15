@@ -90,11 +90,11 @@ public class PatientRepositoryCustomImpl implements PatientRepositoryCustom {
 			return null;
 		}
 		Map<String, BooleanExpression> schTypeMap = new HashMap<>();
-		schTypeMap.put("patientName", patient.patientName.eq(keyword));
-		schTypeMap.put("patientRegistrationNumber", patient.patientRegistrationNumber.eq(keyword));
-		schTypeMap.put("dateOfBirth", patient.dateOfBirth.eq(keyword));
+		schTypeMap.put("patientName", patient.patientName.contains(keyword));
+		schTypeMap.put("patientRegistrationNumber", patient.patientRegistrationNumber.contains(keyword));
+		schTypeMap.put("dateOfBirth", patient.dateOfBirth.contains(keyword));
 
-		return schTypeMap.getOrDefault(schType, patient.patientName.eq(keyword));
+		return schTypeMap.getOrDefault(schType, patient.patientName.contains(keyword));
 	}
 
 }

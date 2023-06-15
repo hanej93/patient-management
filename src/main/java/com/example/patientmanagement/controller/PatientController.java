@@ -22,6 +22,7 @@ import com.example.patientmanagement.dto.response.PatientDto;
 import com.example.patientmanagement.dto.response.PatientPagedResponseDto;
 import com.example.patientmanagement.service.PatientService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -50,14 +51,14 @@ public class PatientController {
 	}
 
 	@PostMapping
-	public ResponseEntity<PatientDto> createPatient(@RequestBody PatientCreateRequestDto requestDto) {
+	public ResponseEntity<PatientDto> createPatient(@RequestBody @Valid PatientCreateRequestDto requestDto) {
 		PatientDto createdPatient = patientService.createPatient(requestDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
 	}
 
 	@PutMapping("/{patientId}")
 	public ResponseEntity<PatientDto> updatePatient(@PathVariable Long patientId,
-		@RequestBody PatientUpdateRequestDto requestDto) {
+		@RequestBody @Valid PatientUpdateRequestDto requestDto) {
 		PatientDto updatedPatient = patientService.updatePatient(patientId, requestDto);
 		return ResponseEntity.ok(updatedPatient);
 	}

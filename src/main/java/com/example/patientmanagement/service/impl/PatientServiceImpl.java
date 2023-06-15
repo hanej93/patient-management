@@ -16,6 +16,7 @@ import com.example.patientmanagement.entity.Patient;
 import com.example.patientmanagement.entity.Visit;
 import com.example.patientmanagement.exception.HospitalNotFoundException;
 import com.example.patientmanagement.exception.PatientNotFoundException;
+import com.example.patientmanagement.mapper.HospitalMapper;
 import com.example.patientmanagement.mapper.PatientMapper;
 import com.example.patientmanagement.mapper.VisitMapper;
 import com.example.patientmanagement.repository.HospitalRepository;
@@ -43,6 +44,7 @@ public class PatientServiceImpl implements PatientService {
 
 		List<Visit> visits = visitRepository.findByPatient(patient);
 		responseDto.setVisits(VisitMapper.toDtoList(visits));
+		responseDto.setHospital(HospitalMapper.toDto(patient.getHospital()));
 
 		return responseDto;
 	}
@@ -70,8 +72,8 @@ public class PatientServiceImpl implements PatientService {
 		String patientRegistrationNumber = generateUniquePatientRegistrationNumber(hospital.getHospitalId(), 3);
 		patient.setPatientRegistrationNumber(patientRegistrationNumber);
 
-		Patient createdPatient = patientRepository.save(patient);
-		return PatientMapper.toDto(createdPatient);
+		patientRepository.save(patient);
+		return PatientMapper.toDto(patient);
 	}
 
 	private String generateUniquePatientRegistrationNumber(Long hospitalId, int digit) {
