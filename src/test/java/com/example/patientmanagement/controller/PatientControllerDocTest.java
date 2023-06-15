@@ -11,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,8 @@ class PatientControllerDocTest {
 	private ObjectMapper objectMapper;
 
 	@Test
-	public void testGetPatientById() throws Exception {
+	@DisplayName("환자 아이디로 조회")
+	public void getPatientById() throws Exception {
 		Long patientId = 1L;
 
 		mockMvc.perform(get("/api/patients/{patientId}", patientId)
@@ -76,7 +78,8 @@ class PatientControllerDocTest {
 	}
 
 	@Test
-	public void testGetAllPatients() throws Exception {
+	@DisplayName("모든 환자 조회")
+	public void getAllPatients() throws Exception {
 		mockMvc.perform(get("/api/patients/all")
 				.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
@@ -94,7 +97,8 @@ class PatientControllerDocTest {
 	}
 
 	@Test
-	public void testGetPagedPatients() throws Exception {
+	@DisplayName("페이징된 환자 조회")
+	public void getPagedPatients() throws Exception {
 
 		mockMvc.perform(get("/api/patients")
 				.param("pageNo", "1")
@@ -144,7 +148,8 @@ class PatientControllerDocTest {
 
 
 	@Test
-	public void testCreatePatient() throws Exception {
+	@DisplayName("환자 생성")
+	public void createPatient() throws Exception {
 		Faker faker = new Faker(Locale.KOREA);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -180,7 +185,8 @@ class PatientControllerDocTest {
 	}
 
 	@Test
-	public void testUpdatePatient() throws Exception {
+	@DisplayName("환자 수정")
+	public void updatePatient() throws Exception {
 		Long patientId = 1L;
 		PatientUpdateRequestDto requestDto = PatientUpdateRequestDto.builder()
 			.patientName("수정이름")
@@ -214,7 +220,8 @@ class PatientControllerDocTest {
 	}
 
 	@Test
-	public void testDeletePatient() throws Exception {
+	@DisplayName("환자 삭제")
+	public void deletePatient() throws Exception {
 		Long patientId = 1L;
 
 		mockMvc.perform(delete("/api/patients/{patientId}", patientId))

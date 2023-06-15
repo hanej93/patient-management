@@ -35,7 +35,6 @@ public class PatientRepositoryCustomImpl implements PatientRepositoryCustom {
 
 	@Override
 	public Page<PatientPagedResponseDto> getPagedPatients(PatientSearchRequestDto requestDto) {
-		QVisit subVisit = new QVisit("subVisit");
 
 		List<PatientPagedResponseDto> content = jpaQueryFactory
 			.select(new QPatientPagedResponseDto(
