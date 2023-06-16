@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Patients</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+  <script src="/webjars/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container py-5">
+  <div>
+    <p class="fs-3 fw-bolder">환자 검색</p>
+  </div>
+  <div class="py-4 d-flex">
+    <style>
+        .search-select-box{width:200px}
+        .search-input-box{width:300px}
+        .search-btn-box button{width:80px}
+    </style>
+    <div class="search-select-box me-2">
+      <select class="form-select" name="schType" id="schType">
+        <option th:each="schType : ${schTypes}" th:value="${schType.value}" th:text="${schType.name}">이름</option>
+      </select>
+    </div>
+    <div class="search-input-box me-2">
+      <input class="form-control" type="text" id="search-input" placeholder="">
+    </div>
+    <div class="search-btn-box">
+      <button type="button" class="btn btn-secondary" id="search-btn">검색</button>
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">이름</th>
+          <th scope="col">환자등록번호</th>
+          <th scope="col">성별</th>
+          <th scope="col">생년월일</th>
+          <th scope="col">휴대전화</th>
+          <th scope="col">최근방문</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-between pagination-box">
+    <div>
+      <p class="fw-light page-info">총 0건 중 0 - 0</p>
+    </div>
+    <div>
+      <nav class="pagination-container">
+        <ul class="pagination">
+          <li class="page-item previous">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item next">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+<script>
+    const PAGE_SIZE = 10;
+
+    $(document).ready(function() {
+        searchPatients();
+    });
+
+    function searchPatients(nowPage = 1) {
+        const pageNo = nowPage;
+        const pageSize = PAGE_SIZE;
+        const schType = $("#schType").val();
+        const keyword = $("#search-input").val();
+
+        const data = {
+            pageNo,
+            pageSize,
+            schType,
+            keyword
+        }
+
+        $.ajax({
+            url: '/api/patients',
+            method: 'GET',
+            data: data,
+        }).done(result => {
+            let paginationBox = $('.pagination-box');
+            if (result.content.length === 0) {
+                paginationBox.addClass('d-none');
+                let noResultRow = $('<tr><td colspan="6" class="text-center py-3">검색결과가 없습니다.</td></tr>');
+                $('.table tbody').empty().append(noResultRow);
+                return;
+            }
+            paginationBox.removeClass('d-none');
+            handleData(result);
+            setPageInfo(result);
+            handlePage(result);
+        }).fail(xhr => {
+            console.error(`searchPatients error: ${xhr}`);
+        })
+    }
+
+    $('#search-btn').on('click', function () {
+        searchPatients();
+    });
+
+    $('#search-input').on('keypress', function (event) {
+        if (event.key === 'Enter') {
+            searchPatients();
+        }
+    });
+
+    $(document).on('click', '.page-item', function () {
+        let nowPage = $('.page-item.active').text();
+        let page = $(this).text();
+        if ($(this).hasClass('previous')) {
+            page = nowPage * 1 - 1;
+        }
+        if ($(this).hasClass('next')) {
+            page = nowPage * 1 + 1;
+        }
+        searchPatients(Math.max(1, page));
+    });
+
+    function handleData(data) {
+        let tableBody = $('.table tbody');
+        tableBody.empty();
+
+        $.each(data.content, function(index, patient) {
+            let row = $('<tr></tr>');
+            let nameCell = $('<td></td>').text(patient.patientName);
+            let registrationNumberCell = $('<td></td>').text(patient.patientRegistrationNumber);
+            let genderCell = $('<td></td>').text(patient.genderCode);
+            let dateOfBirthCell = $('<td></td>').text(patient.dateOfBirth);
+            let phoneNumberCell = $('<td></td>').text(patient.mobilePhoneNumber);
+            let recentlyVisitedCell = $('<td></td>').text(patient.recentlyVisited);
+
+            row.append(nameCell, registrationNumberCell, genderCell, dateOfBirthCell, phoneNumberCell, recentlyVisitedCell);
+            tableBody.append(row);
+        });
+    }
+
+    function setPageInfo(data) {
+        let totalElements = data.totalElements;
+        let pageNumber = data.number + 1; // 0-based index를 1-based index로 변경
+        let pageSize = data.size;
+        let startElement = (pageNumber - 1) * pageSize + 1;
+        let endElement = Math.min(startElement + pageSize - 1, totalElements);
+
+        let pageInfo = '총 ' + totalElements + '건 중 ' + startElement + ' - ' + endElement;
+        $('.page-info').text(pageInfo);
+    }
+
+    function handlePage(data) {
+        // 페이지네이션 요소 생성
+        let pagination = $('<ul class="pagination"></ul>');
+
+        // 이전 버튼 생성
+        if (data.number !== 0) {
+            let previousButton = $('<li class="page-item previous"></li>');
+            let previousLink = $('<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>');
+            previousButton.append(previousLink);
+            pagination.append(previousButton);
+        }
+
+        // 페이지 버튼 생성
+        let currentPage = data.number + 1; // 0-based index로 전달된 현재 페이지 번호를 1-based index로 변경
+
+        let startPageGroup = Math.floor((currentPage - 1) / 5) * 5 + 1;
+        let endPageGroup = Math.min(startPageGroup + 4, data.totalPages);
+
+        for (let i = startPageGroup; i <= endPageGroup; i++) {
+            let pageItem = $('<li class="page-item"></li>');
+            let pageLink = $('<a class="page-link" href="#">' + i + '</a>');
+
+            if (i === currentPage) {
+                pageItem.addClass('active');
+            }
+
+            pageItem.append(pageLink);
+            pagination.append(pageItem);
+        }
+
+        // 다음 버튼 생성
+        if (data.number !== data.totalPages - 1) {
+            let nextButton = $('<li class="page-item next"></li>');
+            let nextLink = $('<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>');
+            nextButton.append(nextLink);
+            pagination.append(nextButton);
+        }
+
+        // 생성한 페이지네이션 요소를 DOM에 추가
+        $('.pagination-container').empty().append(pagination);
+
+        // 아이템 리스트 생성
+        let itemList = $('<ul class="item-list"></ul>');
+        $.each(data.content, function(index, item) {
+            let listItem = $('<li class="item">' + item.name + '</li>');
+            itemList.append(listItem);
+        });
+
+        // 생성한 아이템 리스트를 DOM에 추가
+        $('.item-list-container').empty().append(itemList);
+    }
+</script>
+</body>
+</html>
