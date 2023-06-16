@@ -20,6 +20,7 @@ import com.example.patientmanagement.dto.request.PatientSearchRequestDto;
 import com.example.patientmanagement.dto.request.PatientUpdateRequestDto;
 import com.example.patientmanagement.dto.response.PatientDto;
 import com.example.patientmanagement.dto.response.PatientPagedResponseDto;
+import com.example.patientmanagement.repository.CodeGroupRepository;
 import com.example.patientmanagement.service.PatientService;
 
 import jakarta.validation.Valid;

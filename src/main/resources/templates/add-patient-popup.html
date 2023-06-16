@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">신규 환자 등록</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="patientForm">
+          <div class="mb-3">
+            <label class="col-form-label">환자 이름:</label>
+            <input type="text" class="form-control"name="patientName">
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">병원 목록:</label>
+            <select class="form-select" name="hospital" id="hospital">
+              <option th:each="hospital : ${hospitals}" th:value="${hospital.hospitalId}" th:text="${hospital.hospitalName}">병원이름</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label me-2">성별 코드:</label>
+            <div th:each="genderCode, status : ${genderCodes}" class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="genderCode" th:id="${'genderCode' + genderCode.codeId}" th:value="${genderCode.codeId}" th:checked="${status.first}">
+              <label class="form-check-label" th:for="${'genderCode' + genderCode.codeId}" th:text="${genderCode.codeName}">1</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">생년월일:</label>
+            <input type="text" class="form-control" name="dateOfBirth">
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">휴대전화 번호:</label>
+            <input type="text" class="form-control" name="mobilePhoneNumber">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary save-btn">등록</button>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
