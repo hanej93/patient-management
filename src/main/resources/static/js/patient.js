@@ -44,9 +44,16 @@ let patient = {
 			this.setPageInfo(result);
 			this.handlePage(result);
 		}).fail(xhr => {
-			console.error(`searchPatients error: ${xhr}`);
+			console.error(`searchPatients error: ${JSON.stringify(xhr)}`);
 		})
+	},
 
+	clearModal: function ($modal) {
+		$modal.find("input[name=patientName]").val('');
+		$modal.find("select[name=hospital] option:first").prop('selected', true);
+		$modal.find("input[name=genderCode]:first").prop('checked', true);
+		$modal.find("input[name=dateOfBirth]").val('');
+		$modal.find("input[name=mobilePhoneNumber]").val('');
 	},
 
 	save: function (){
@@ -72,10 +79,12 @@ let patient = {
 			dataType:"json"
 		}).done(result => {
 			console.log(result);
-			$('#addPatientModal').modal('hide');
+			const $addModal = $('#addPatientModal');
+			$addModal.modal('hide');
 			this.search();
+			this.clearModal($addModal);
 		}).fail(xhr => {
-			console.error(`savePatients error: ${xhr}`);
+			console.error(`savePatients error: ${JSON.stringify(xhr)}`);
 		});
 	},
 
@@ -91,7 +100,7 @@ let patient = {
 			$('#deletePatientModal').modal('hide');
 			this.search();
 		}).fail(xhr => {
-			console.error(`deletePatients error: ${xhr}`);
+			console.error(`deletePatients error: ${JSON.stringify(xhr)}`);
 		});
 	},
 
@@ -113,7 +122,7 @@ let patient = {
 			$('#updatePatientModal').modal('hide');
 			this.search();
 		}).fail(xhr => {
-			console.error(`updatePatients error: ${xhr}`);
+			console.error(`updatePatients error: ${JSON.stringify(xhr)}`);
 		});
 	},
 
