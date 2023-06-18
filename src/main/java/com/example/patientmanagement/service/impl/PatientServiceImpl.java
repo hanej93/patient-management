@@ -14,6 +14,7 @@ import com.example.patientmanagement.dto.response.PatientPagedResponseDto;
 import com.example.patientmanagement.entity.Hospital;
 import com.example.patientmanagement.entity.Patient;
 import com.example.patientmanagement.entity.Visit;
+import com.example.patientmanagement.entity.editor.PatientEditor;
 import com.example.patientmanagement.exception.HospitalNotFoundException;
 import com.example.patientmanagement.exception.PatientNotFoundException;
 import com.example.patientmanagement.mapper.HospitalMapper;
@@ -91,7 +92,15 @@ public class PatientServiceImpl implements PatientService {
 	public PatientDto updatePatient(Long patientId, PatientUpdateRequestDto requestDto) {
 		Patient patient = patientRepository.findById(patientId)
 			.orElseThrow(PatientNotFoundException::new);
-		PatientMapper.updatePatient(patient, requestDto);
+
+		PatientEditor patientEditor = patient.toEditor()
+			.patientName(requestDto.getPatientName())
+			.genderCode(requestDto.getGenderCode())
+			.dateOfBirth(requestDto.getDateOfBirth())
+			.mobilePhoneNumber(requestDto.getMobilePhoneNumber())
+			.build();
+
+		patient.edit(patientEditor);
 		return PatientMapper.toDto(patient);
 	}
 

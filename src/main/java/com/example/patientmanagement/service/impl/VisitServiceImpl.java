@@ -11,6 +11,7 @@ import com.example.patientmanagement.dto.response.VisitDto;
 import com.example.patientmanagement.entity.Hospital;
 import com.example.patientmanagement.entity.Patient;
 import com.example.patientmanagement.entity.Visit;
+import com.example.patientmanagement.entity.editor.VisitEditor;
 import com.example.patientmanagement.exception.PatientNotFoundException;
 import com.example.patientmanagement.exception.VisitNotFoundException;
 import com.example.patientmanagement.mapper.VisitMapper;
@@ -66,7 +67,13 @@ public class VisitServiceImpl implements VisitService {
 	public VisitDto updateVisit(Long visitId, VisitUpdateRequestDto requestDto) {
 		Visit visit = visitRepository.findById(visitId)
 			.orElseThrow(VisitNotFoundException::new);
-		VisitMapper.updateVisit(visit, requestDto);
+
+		VisitEditor visitEditor = visit.toEditor()
+			.visitDate(requestDto.getVisitDate())
+			.visitStatusCode(requestDto.getVisitStatusCode())
+			.build();
+
+		visit.edit(visitEditor);
 		return VisitMapper.toDto(visit);
 	}
 

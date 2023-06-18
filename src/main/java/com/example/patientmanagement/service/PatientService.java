@@ -9,7 +9,6 @@ import com.example.patientmanagement.dto.request.PatientSearchRequestDto;
 import com.example.patientmanagement.dto.request.PatientUpdateRequestDto;
 import com.example.patientmanagement.dto.response.PatientDto;
 import com.example.patientmanagement.dto.response.PatientPagedResponseDto;
-import com.example.patientmanagement.entity.Patient;
 
 public interface PatientService {
 

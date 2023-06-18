@@ -5,6 +5,8 @@ import static jakarta.persistence.GenerationType.*;
 
 import java.time.LocalDateTime;
 
+import com.example.patientmanagement.entity.editor.VisitEditor;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,4 +50,20 @@ public class Visit {
 		this.visitDate = visitDate;
 		this.visitStatusCode = visitStatusCode;
 	}
+
+	public VisitEditor.VisitEditorBuilder toEditor() {
+		return VisitEditor.builder()
+			.hospital(hospital)
+			.patient(patient)
+			.visitDate(visitDate)
+			.visitStatusCode(visitStatusCode);
+	}
+
+	public void edit(VisitEditor visitEditor) {
+		hospital = visitEditor.getHospital();
+		patient = visitEditor.getPatient();
+		visitDate = visitEditor.getVisitDate();
+		visitStatusCode = visitEditor.getVisitStatusCode();
+	}
+
 }

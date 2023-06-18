@@ -7,6 +7,8 @@ import static jakarta.persistence.GenerationType.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.patientmanagement.entity.editor.PatientEditor;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -61,5 +63,22 @@ public class Patient {
 		this.genderCode = genderCode;
 		this.dateOfBirth = dateOfBirth;
 		this.mobilePhoneNumber = mobilePhoneNumber;
+	}
+
+	public PatientEditor.PatientEditorBuilder toEditor() {
+		return PatientEditor.builder()
+			.patientName(patientName)
+			.patientRegistrationNumber(patientRegistrationNumber)
+			.genderCode(genderCode)
+			.dateOfBirth(dateOfBirth)
+			.mobilePhoneNumber(mobilePhoneNumber);
+	}
+
+	public void edit(PatientEditor patientEditor) {
+		patientName = patientEditor.getPatientName();
+		patientRegistrationNumber = patientEditor.getPatientRegistrationNumber();
+		genderCode = patientEditor.getGenderCode();
+		dateOfBirth = patientEditor.getDateOfBirth();
+		mobilePhoneNumber = patientEditor.getMobilePhoneNumber();
 	}
 }

@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.example.patientmanagement.dto.request.PatientCreateRequestDto;
-import com.example.patientmanagement.dto.request.PatientUpdateRequestDto;
 import com.example.patientmanagement.dto.response.PatientDto;
 import com.example.patientmanagement.entity.Patient;
-import com.example.patientmanagement.service.editor.PatientEditor;
 
 public class PatientMapper {
 
@@ -35,15 +33,6 @@ public class PatientMapper {
 			.dateOfBirth(requestDto.getDateOfBirth())
 			.mobilePhoneNumber(requestDto.getMobilePhoneNumber())
 			.build();
-	}
-
-	public static void updatePatient(Patient patient, PatientUpdateRequestDto requestDto) {
-		PatientEditor editor = new PatientEditor(patient);
-		editor.patientName(requestDto.getPatientName())
-			.genderCode(requestDto.getGenderCode())
-			.dateOfBirth(requestDto.getDateOfBirth())
-			.mobilePhoneNumber(requestDto.getMobilePhoneNumber())
-			.applyChanges();
 	}
 
 }

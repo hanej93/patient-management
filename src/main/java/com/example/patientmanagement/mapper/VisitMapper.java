@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.example.patientmanagement.dto.request.VisitCreateRequestDto;
-import com.example.patientmanagement.dto.request.VisitUpdateRequestDto;
 import com.example.patientmanagement.dto.response.VisitDto;
 import com.example.patientmanagement.entity.Visit;
-import com.example.patientmanagement.service.editor.VisitEditor;
 
 public class VisitMapper {
 
@@ -34,10 +32,4 @@ public class VisitMapper {
 			.build();
 	}
 
-	public static void updateVisit(Visit visit, VisitUpdateRequestDto requestDto) {
-		VisitEditor editor = new VisitEditor(visit);
-		editor.visitDate(requestDto.getVisitDate())
-			.visitStatusCode(requestDto.getVisitStatusCode())
-			.applyChanges();
-	}
 }
