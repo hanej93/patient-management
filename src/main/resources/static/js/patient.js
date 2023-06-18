@@ -1,4 +1,4 @@
-let patient = {
+const patient = {
 	init: function(){
 		$("#addPatientModal .save-btn").on("click",()=>{
 			this.save();
@@ -15,12 +15,12 @@ let patient = {
 	},
 
 	search: function (nowPage = 1) {
-		const pageNo = nowPage;
-		const pageSize = PAGE_SIZE;
-		const schType = $("#schType").val();
-		const keyword = $("#search-input").val();
+		let pageNo = nowPage;
+		let pageSize = PAGE_SIZE;
+		let schType = $("#schType").val();
+		let keyword = $("#search-input").val();
 
-		const data = {
+		let data = {
 			pageNo,
 			pageSize,
 			schType,
@@ -45,15 +45,15 @@ let patient = {
 			this.handlePage(result);
 		}).fail(xhr => {
 			console.error(`searchPatients error: ${JSON.stringify(xhr)}`);
-		})
+		});
 	},
 
 	clearModal: function ($modal) {
-		$modal.find("input[name=patientName]").val('');
-		$modal.find("select[name=hospital] option:first").prop('selected', true);
-		$modal.find("input[name=genderCode]:first").prop('checked', true);
-		$modal.find("input[name=dateOfBirth]").val('');
-		$modal.find("input[name=mobilePhoneNumber]").val('');
+		$modal.find("input[name=patientName]")?.val('');
+		$modal.find("select[name=hospital] option:first")?.prop('selected', true);
+		$modal.find("input[name=genderCode]:first")?.prop('checked', true);
+		$modal.find("input[name=dateOfBirth]")?.val('');
+		$modal.find("input[name=mobilePhoneNumber]")?.val('');
 	},
 
 	save: function (){
@@ -103,7 +103,6 @@ let patient = {
 			console.error(`deletePatients error: ${JSON.stringify(xhr)}`);
 		});
 	},
-
 
 	update: function (){
 		let id = $("#id").val();
