@@ -17,13 +17,11 @@ import org.springframework.util.StringUtils;
 import com.example.patientmanagement.dto.request.PatientSearchRequestDto;
 import com.example.patientmanagement.dto.response.PatientPagedResponseDto;
 import com.example.patientmanagement.dto.response.QPatientPagedResponseDto;
-import com.example.patientmanagement.entity.QVisit;
 import com.example.patientmanagement.repository.custom.PatientRepositoryCustom;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.DateTimePath;
+import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.Expressions;
-import com.querydsl.core.types.dsl.StringTemplate;
-import com.querydsl.jpa.JPAExpressions;
+import com.querydsl.core.types.dsl.StringExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
@@ -44,14 +42,14 @@ public class PatientRepositoryCustomImpl implements PatientRepositoryCustom {
 				patient.genderCode, 								// 성별
 				patient.dateOfBirth,								// 생년월일
 				patient.mobilePhoneNumber,							// 휴대전화
-				dateToChar(visit.visitDate).coalesce("-") 		// 최근방문
+				dateToChar(visit.visitDate.max())					// 최근방문
 			))
 			.from(patient)
 			.leftJoin(patient.visits, visit)
 			.where(
-				getRecentlyVisited(visit.visitDate),
 				getKeywordCondition(requestDto.getSchType(), requestDto.getKeyword())
 			)
+			.groupBy(patient)
 			.limit(requestDto.getPageSize())
 			.offset(requestDto.getOffset())
 			.orderBy(patient.patientId.desc())
@@ -70,18 +68,9 @@ public class PatientRepositoryCustomImpl implements PatientRepositoryCustom {
 		return new PageImpl<>(content, pageable, total);
 	}
 
-	private static BooleanExpression getRecentlyVisited(DateTimePath<LocalDateTime> visitDate) {
-		QVisit subVisit = new QVisit("subVisit");
-
-		return visitDate.eq(
-			JPAExpressions.select(subVisit.visitDate.max())
-				.from(subVisit)
-				.where(subVisit.patient.eq(patient))
-		).or(visitDate.isNull());
-	}
-
-	private StringTemplate dateToChar(DateTimePath<LocalDateTime> date) {
-		return Expressions.stringTemplate("function('to_char', {0}, 'yyyy-MM-dd')", date);
+	private StringExpression dateToChar(DateTimeExpression<LocalDateTime> date) {
+		return Expressions.stringTemplate("function('to_char', {0}, 'yyyy-MM-dd')", date)
+			.coalesce("-");
 	}
 
 	private BooleanExpression getKeywordCondition(String schType, String keyword) {

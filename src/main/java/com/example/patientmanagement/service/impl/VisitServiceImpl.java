@@ -12,6 +12,7 @@ import com.example.patientmanagement.entity.Hospital;
 import com.example.patientmanagement.entity.Patient;
 import com.example.patientmanagement.entity.Visit;
 import com.example.patientmanagement.entity.editor.VisitEditor;
+import com.example.patientmanagement.exception.HospitalNotFoundException;
 import com.example.patientmanagement.exception.PatientNotFoundException;
 import com.example.patientmanagement.exception.VisitNotFoundException;
 import com.example.patientmanagement.mapper.VisitMapper;
@@ -29,7 +30,6 @@ import lombok.RequiredArgsConstructor;
 public class VisitServiceImpl implements VisitService {
 
 	private final VisitRepository visitRepository;
-	private final HospitalRepository hospitalRepository;
 	private final PatientRepository patientRepository;
 
 	@Override
@@ -48,16 +48,12 @@ public class VisitServiceImpl implements VisitService {
 	@Override
 	@Transactional
 	public VisitDto createVisit(VisitCreateRequestDto requestDto) {
-		Visit visit = VisitMapper.toEntity(requestDto);
-
-		Hospital hospital = hospitalRepository.findById(requestDto.getHospitalId())
-			.orElseThrow(() -> new IllegalArgumentException());
-		visit.setHospital(hospital);
-
-		Patient patient = patientRepository.findById(requestDto.getPatientId())
+		Patient patient = patientRepository.findByIdAndHospitalId(requestDto.getPatientId(), requestDto.getHospitalId())
 			.orElseThrow(PatientNotFoundException::new);
-		visit.setPatient(patient);
 
+		Visit visit = VisitMapper.toEntity(requestDto);
+		visit.setHospital(patient.getHospital());
+		visit.setPatient(patient);
 		Visit createdVisit = visitRepository.save(visit);
 		return VisitMapper.toDto(createdVisit);
 	}

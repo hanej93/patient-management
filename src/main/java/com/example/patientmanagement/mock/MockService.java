@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.patientmanagement.dto.request.PatientCreateRequestDto;
 import com.example.patientmanagement.dto.request.VisitCreateRequestDto;
+import com.example.patientmanagement.dto.response.HospitalDto;
 import com.example.patientmanagement.entity.Code;
 import com.example.patientmanagement.entity.CodeGroup;
 import com.example.patientmanagement.entity.Hospital;
@@ -174,14 +175,14 @@ public class MockService {
 		Faker faker = new Faker(Locale.KOREA);
 
 		for (int i = 0; i < 150; i++) {
-			Long hospitalId = faker.random().nextInt(1, 10).longValue();
 			Long patientId = faker.random().nextInt(1, 100).longValue();
+			HospitalDto hospital = patientService.getPatientById(patientId).getHospital();
 			LocalDateTime visitDate = LocalDateTime.ofInstant(faker.date().future(365, TimeUnit.DAYS).toInstant(),
 				ZoneId.systemDefault());
 			String visitStatusCode = faker.options().option("1", "2", "3");
 
 			VisitCreateRequestDto requestDto = VisitCreateRequestDto.builder()
-				.hospitalId(hospitalId)
+				.hospitalId(hospital.getHospitalId())
 				.patientId(patientId)
 				.visitDate(visitDate)
 				.visitStatusCode(visitStatusCode)

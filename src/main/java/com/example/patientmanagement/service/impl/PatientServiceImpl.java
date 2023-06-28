@@ -13,7 +13,6 @@ import com.example.patientmanagement.dto.response.PatientDto;
 import com.example.patientmanagement.dto.response.PatientPagedResponseDto;
 import com.example.patientmanagement.entity.Hospital;
 import com.example.patientmanagement.entity.Patient;
-import com.example.patientmanagement.entity.Visit;
 import com.example.patientmanagement.entity.editor.PatientEditor;
 import com.example.patientmanagement.exception.HospitalNotFoundException;
 import com.example.patientmanagement.exception.PatientNotFoundException;
@@ -22,7 +21,6 @@ import com.example.patientmanagement.mapper.PatientMapper;
 import com.example.patientmanagement.mapper.VisitMapper;
 import com.example.patientmanagement.repository.HospitalRepository;
 import com.example.patientmanagement.repository.PatientRepository;
-import com.example.patientmanagement.repository.VisitRepository;
 import com.example.patientmanagement.service.PatientService;
 import com.example.patientmanagement.utils.PatientUtils;
 
@@ -35,7 +33,6 @@ public class PatientServiceImpl implements PatientService {
 
 	private final PatientRepository patientRepository;
 	private final HospitalRepository hospitalRepository;
-	private final VisitRepository visitRepository;
 
 	@Override
 	public PatientDto getPatientById(Long patientId) {
@@ -43,8 +40,7 @@ public class PatientServiceImpl implements PatientService {
 			.orElseThrow(PatientNotFoundException::new);
 		PatientDto responseDto = PatientMapper.toDto(patient);
 
-		List<Visit> visits = visitRepository.findByPatient(patient);
-		responseDto.setVisits(VisitMapper.toDtoList(visits));
+		responseDto.setVisits(VisitMapper.toDtoList(patient.getVisits()));
 		responseDto.setHospital(HospitalMapper.toDto(patient.getHospital()));
 
 		return responseDto;
